@@ -32,14 +32,7 @@ intrinsic ComputeEdges(V::VData)
     s:=[M[x] : x in s];
     sproj:=[x*Dagger(x): x in s];
     sproj:=[x/Trace(Trace(x)): x in sproj];
-    /*s:=[x/Trace(Trace(x)) : x in s];
-    d:=KMatrixSpace(K,#s,n^2)!0;
-    for ii in [1..#s] do
-     v:=Eltseq(s[ii]);
-     for jj in [1..n^2] do
-      d[ii][jj]:=v[jj];
-     end for;
-    end for;*/
+    
     if #sproj ne 0 and PerfectionRankDAList(s) eq ERank then
      Append(~edges,sproj);
     end if;
@@ -112,51 +105,6 @@ intrinsic GeodesicIntersection(M1::Mtrx,M2::Mtrx,Face::Any,V::VData : ReturnSolu
  end if;
  
  return 1,SymmetricCoordinatesToMatrix(Eltseq(Vert));
- 
- 
- /*PV:=V`PolytopeVectors[i][j];
- FaceGens:=[(M[x]*Dagger(M[x])/Trace(Trace(M[x]*Dagger(M[x])))) : x in V`FacesList[i][j]];
- Translations:=[FaceGens[i]-FaceGens[1] : i in [2..#FaceGens]];
- A:=KMatrixSpace(K,#FaceGens,n^2) ! 0;
- for i in [1..#Translations] do
-  a:=Eltseq(Translations[i]);
-  for j in [1..#a] do
-   A[i][j]:=a[j];
-  end for;
- end for;
- a:=Eltseq(M2-M1);
- for i in [1..#a] do
-  A[#FaceGens][i]:=a[i];
- end for;
- LS:=Eltseq(M1-FaceGens[1]);
- a,b,c:=IsConsistent(A,Vector(LS));
- if not a then 
-  return 0,0;
- end if;
- t:=Rationals()!b[#FaceGens];
- et:=-t;
- if not (0 lt et and et lt 1) then
-  return 0,0;
- end if;
-
- solution:=M1-t*(M2-M1);
- if solution eq M1 then 
-  return 0,0; 
- end if;
- for v in PV do
-  vs:=MyInnerProduct(v,solution);
-  if vs eq 0 then
-   return 2,solution;
-  end if;
-  if vs lt 0 then
-   return 0,0;
-  end if;
- end for;
- if ReturnSolution then
-  return 1,solution;
- else
-  return 1;
- end if;*/
 end intrinsic;
 
 intrinsic ConstructWord(x::Mtrx,V::VData) -> SeqEnum

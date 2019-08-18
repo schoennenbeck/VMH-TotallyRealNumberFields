@@ -85,13 +85,13 @@ end intrinsic;
 
 intrinsic InitializeData(K::FldNum,n::RngIntElt)
  {Initalizes the BasicData file to work with O_K^n}
- bd:="~/Auftragszeug/Hulek/BasicData.m";
+ bd:="../../BasicData.m";
  V:=KMatrixSpace(K,n,1);
  PrintFile(bd,"K:=":Overwrite:=true);
  PrintFileMagma(bd,K);
  PrintFile(bd,"; n:=" cat Sprint(n) cat ";V:=KMatrixSpace(K,n,1);  L:=[IntegralBasis(K)[i]*V.j: i in [1..Degree(K)],j in [1..n]];");
- PrintFile("~/Auftragszeug/Hulek/Initialize.m","");
- PrintFile("~/Auftragszeug/Hulek/DivAlg/Voronoi/Voronoi.m","");
+ PrintFile("../../Initialize.m","");
+ PrintFile("../../DivAlg/Voronoi/Voronoi.m","");
 
 end intrinsic;
  

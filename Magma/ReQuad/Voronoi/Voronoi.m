@@ -123,45 +123,7 @@ intrinsic VoronoiAlgorithm(:quiet:=false,SL:=false,CheckMembership:=0) -> SeqEnu
   Faces:=[[Position(GeneratorsOfPolytope,Eltseq(Vert[i])): i in F ]: F in Faces];
   
   Faces:=[[x-1: x in y]: y in Faces];
-  Append(~facelist,[Seqset(x): x in Faces]);
-
-  /*
-  QHDat:=Open("QHullData" cat filestring,"w");
-  Puts(QHDat, IntegerToString(dimsym) cat " RBOX c");
-  Puts(QHDat, IntegerToString(#Sproj+1));
-  Puts(QHDat, &cat ["0 " : i in [1..dimsym]]);
-  for x in [&cat[RealToString(R!Evaluate(y[i],phi)) cat " " : i in [1..dimsym]] : y in Co] do
-   Puts(QHDat,x);
-  end for;
-  delete QHDat;
-  System(qhulldirectory cat " -Fv <QHullData" cat filestring cat ">QHullResult" cat filestring);
-  
-  Faces:=[];
-  SomFac:=Open("QHullResult" cat filestring,"r");
-  nbface := StringToInteger(Gets(SomFac));
-  for i in [1..nbface] do
-   Faces:=Append(Faces, Remove([StringToInteger(n) : n in Split(Gets(SomFac)," ")],1));
-  end for;
-  delete SomFac;
-  //We only need those faces which contain 0. But then, we don't need the 0 in it.
-  Faces:=[ Exclude(F,0) : F in Faces | 0 in F];
-  Faces:=[ {n : n in F} : F in Faces];
-  Append(~numberoffaces,#Faces);
-  Append(~facelist,Faces);
-  FaceForms:=[];
-  AutFF:=[];
-  facevect:=[];
-  */
-
-  
-  /*Ss:={1..#Sproj};
-  Faces:=Subsets(Ss,dimsym-1);
-  TrueFaces:=[];
-  for k in [dimsym..#Ss-1] do 
-   Faces := Faces join Subsets(Ss,k);
-  end for;
-  Faces:=Setseq(Faces);*/
-  
+  Append(~facelist,[Seqset(x): x in Faces]);  
   
   count:=0;
  
