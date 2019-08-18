@@ -1,0 +1,34 @@
+{
+	Types.m
+
+	BasicData.m
+	Initialize.m
+
+	DivAlg
+	{
+		Functions
+		{
+			Miscellaneous.m
+ 			Lattice.m
+			Groups.m
+		}
+		Voronoi
+		{
+		 	Voronoi.m
+			MinClass.m
+		}
+		WordProblem
+		{
+			Presentation.m
+			WordProblem.m
+			SLPresentation.m
+		}
+	}
+	Homology
+	{
+		ComplexComputation.m
+		DataAssembly.m
+		Functions.m	
+		Gap-Conversions.m
+	}
+}
