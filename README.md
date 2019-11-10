@@ -1,4 +1,4 @@
-# VMH-RealQuadraticNumberFields
+# VMH-TotallyRealNumberFields
 Magma and GAP methods for working with arithmetic groups over totally real number fields. These methods are derived from the methods described in the following articles:
 * [Perfect lattices over imaginary quadratic number fields](http://de.arxiv.org/abs/1304.0559) (O. Braun and R. Coulangeon, Mathematics of Computation, 2015)
 * [Computing in arithmetic groups with Voronoi's algorithm](https://arxiv.org/abs/1407.6234) (O. Braun, R. Coulangeon, G. Nebe and S. Schönnenbeck, Journal of Algebra, 2015)
