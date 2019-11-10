@@ -58,9 +58,9 @@ This workflow is a little messier and requires us to write things to a text-file
 1. If we want to work with the full group, i.e. $\GL_n(\mathbb{Z}_K)$ simply call:
 
         ComputeComplexGL("path/to/store/filename", V)
-2. If we want to work with a finite index subgroup. We need a function checking for membership in this subgroup. For example if we have an ideal I and want the subgroup of matrices of determinant 1 whose lower left entry is in I we could define:
+2. If we want to work with a finite index subgroup. We need a function checking for membership in this subgroup. For example if we have an ideal I and want the subgroup of matrices whose lower left entry is in I we could define:
 
-        CheckMembership := func<x| IsInSL(x) and x[2][1] in I>;
+        CheckMembership := func<x| IsInGL(x) and x[2][1] in I>;
 3. Moreover we need the index of this subgroup in the full group (this is usually known to us) and a system of right-coset-representatives of the subgroup in the full group. You can either choose to provide your own favorite system of representatives or call the following command (note that this will run forever if the index you provide is larger than the actual index):
 
         Reps:=SystemOfRepresentativesFiniteIndex(V`MultFreeList,CheckMembership,index);
