@@ -23,14 +23,14 @@ Most of these algorithms are also available for finite index subgroups of the ba
 Overall, the usability of the algorithms is not great and a lot of the general design of the Magma-package is pretty terrible. However, for reasons of me no longer working in academia and generally not wanting to do the refactoring it is going to stay this way for the foresesable future. If you are willing to overlook these weaknesses, performing computations with our packages works as follows: 
 
 ### General Setup
-1. Choose the dimension $n$ (let's say $2$ since basically only $2$ and $3$ are actually feasible) and the (totally real) number field $K$ (let's say $K = \mathbb{Q}(\sqrt{10})$). We will need to edit the file BasicData.m to make this known to Magma. There are four values that need to be set in this file. However, you will not need to touch the last two as long as you want to work with the general linear group (over the integers of $K$) and its finite index subgroups  Edit the file BasicData.m so that it reads:
+1. Choose the dimension $n$ (let's say $2$ since basically only $2$ and $3$ are actually feasible) and the (totally real) number field $K$ (let's say $K = \mathbb{Q}(\sqrt{10})$). We will need to edit the file BasicData.m to make this known to Magma. There are four values that need to be set in this file. However, you will not need to touch the last two as long as you want to work with the general linear group (over the integers of $K$) and its finite index subgroups. Edit the file BasicData.m so that it reads:
 
         QuadraticField(10);
         n:=2;
         V:=KMatrixSpace(K,n,1);
         L:=[IntegralBasis(K)[i]*V.j: i in [1..Degree(K)],j in [1..n]];
 
-You can exchange the value of L for any $\mathbb{Z}$-basis of the n-dimensional K-space V to work with order fixing the corresponding $\mathbb{Z}$-lattice instead. I do not expect anybody actually needs this option, but it's there... 
+You can exchange the value of `L` for any $\mathbb{Z}$-basis of the $n$-dimensional $K$-space $V$ to work with order fixing the corresponding $\mathbb{Z}$-lattice instead. I do not expect anybody actually needs this option, but it's there... 
 
 2. Open Magma and initialize the basic setup by calling:
 
@@ -76,15 +76,15 @@ This workflow is a little messier and requires us to write things to a text-file
         LoadPackage("HAP");
         Read("path/to/gapstuff/ReadWellRoundedComplex.gi");
         
-2. To get the contractible G-complex (non-free G-resolution) up to dimension 'length' (can be arbitrarily high without actually hurting performance) we constructed in Magma call:
+2. To get the contractible $G$-complex (non-free $G$-resolution) up to dimension 'length' (can be arbitrarily high without actually hurting performance) we constructed in Magma call:
 
         R := ResolutionFromWellRoundedComplex(file, length);
         
-3. This gives you a non-free G-resolution in HAP which you can work with in the usual way. For instance you could compute a free resolution (of the integers) by calling
+3. This gives you a non-free $G$-resolution in HAP which you can work with in the usual way. For instance you could compute a free resolution (of the integers) by calling
 
         F := FreeGResolution(R, length);
         
-4. We provide two more GAP-functionalities. In the file 'QuotientComplex.gi' we define a function QuotientComplex which takes in a contractible G-complex and a central subgroup of G acting trivially on the complex and outputs a contractible complex for the quotient group. Moreover, the file 'WriteComplex.gi' defines a function WriteComplex taking in a contractible G-complex and a filename and stores the contractible G-complex in HAP-readable format in the file (eliminating the need to use our GAP-functionalities when sharing complexes with other people).
+4. We provide two more GAP-functionalities. In the file 'QuotientComplex.gi' we define a function QuotientComplex which takes in a contractible $G$-complex and a central subgroup of $G$ acting trivially on the complex and outputs a contractible complex for the quotient group. Moreover, the file 'WriteComplex.gi' defines a function WriteComplex taking in a contractible $G$-complex and a filename and stores the contractible $G$-complex in HAP-readable format in the file (eliminating the need to use our GAP-functionalities when sharing complexes with other people).
 
 ## Additional comments
 1. ~~Why the hell can I not use Latex in the ReadMe?~~ Finally!
