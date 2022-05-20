@@ -9,7 +9,7 @@ The implementation was primarily done by Sebastian Schönnenbeck during his time
 Some results of computations performed using these algorithms are already available in our [database](http://www.math.rwth-aachen.de/~Oliver.Braun/unitgroups/). When (not if) you find a bug, feel free to open an issue or try to fix it yourself (good luck reading our code) and open a pull request. For the time being this software is offered as is.
 
 ## Overview
-The algorithms we implemented deal with groups of the form $GL_n(\mathbb{Z}_K)$ for $n \geq 2$ and $K$ a totally real number field. In particular the algorithms work for real quadratic number fields, but also for the totally real subfields of cyclotomic fields or for the rationals itself (though there are much better algorithms available in the latter case). However, since the complexity of the computations grows rather quickly with $n$ and (experimentally) with the discriminant of $K$ the algorithms are only really usefull in a relatively narrow window of parameters.
+The algorithms we implemented deal with groups of the form $\operatorname{GL}_n(\mathbb{Z}_K)$ for $n \geq 2$ and $K$ a totally real number field. In particular the algorithms work for real quadratic number fields, but also for the totally real subfields of cyclotomic fields or for the rationals itself (though there are much better algorithms available in the latter case). However, since the complexity of the computations grows rather quickly with $n$ and (experimentally) with the discriminant of $K$ the algorithms are only really usefull in a relatively narrow window of parameters.
 
 The following algorithms are available:
 * Computing a presentation (i.e. generators and defining relations).
@@ -48,14 +48,14 @@ Now G is a finitely presented group and g a homomorphism from G to the matrix gr
 * CheckMembership (default: 0). Here you can provide a function checking an element of the full matrix group for membership in a (finite index) subgroup. If you do a presentation of this subgroup is computed instead of a presentation for the full group.
 
 ### Solving constructive membership problems
-We suppose we already have the presentation from the last step (if not it is actually computed when you first try to solve an constructive membership problem). Given an element $M \in \GL_n(\mathbb{Z}_K)$ we now want to find $m \in G$ such that $g(m) = M$.
+We suppose we already have the presentation from the last step (if not it is actually computed when you first try to solve an constructive membership problem). Given an element $M \in \operatorname{GL}_n(\mathbb{Z}_K)$ we now want to find $m \in G$ such that $g(m) = M$.
 To do this call:
 
         m := SolveWordProblem(M, V)
         
 ### Constructing a contractible G-complex
 This workflow is a little messier and requires us to write things to a text-file which will later be used by GAP. We again assume that we already have the general setup ready.
-1. If we want to work with the full group, i.e. $\GL_n(\mathbb{Z}_K)$ simply call:
+1. If we want to work with the full group, i.e. $\operatorname{GL}_n(\mathbb{Z}_K)$ simply call:
 
         ComputeComplexGL("path/to/store/filename", V)
 2. If we want to work with a finite index subgroup. We need a function checking for membership in this subgroup. For example if we have an ideal I and want the subgroup of matrices whose lower left entry is in I we could define:
@@ -87,6 +87,6 @@ This workflow is a little messier and requires us to write things to a text-file
 4. We provide two more GAP-functionalities. In the file 'QuotientComplex.gi' we define a function QuotientComplex which takes in a contractible G-complex and a central subgroup of G acting trivially on the complex and outputs a contractible complex for the quotient group. Moreover, the file 'WriteComplex.gi' defines a function WriteComplex taking in a contractible G-complex and a filename and stores the contractible G-complex in HAP-readable format in the file (eliminating the need to use our GAP-functionalities when sharing complexes with other people).
 
 ## Additional comments
-1. Why the hell can I not use Latex in the ReadMe?
+1. ~~Why the hell can I not use Latex in the ReadMe?~~ Finally!
 2. License: No clue. If you use these algorithms for your research please cite the corresponding papers. If you use these algorithms for commercial purposes please let me know, I will be mightily impressed that you found a real world use-case...
 3. In case you were wondering: VMH stands for Voronoi, Minimal Classes, and Homology.
